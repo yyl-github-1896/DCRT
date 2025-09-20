@@ -29,15 +29,12 @@ CORRUPTIONS = [
     #  'ImageCompression'
 ]
 def add_impulse_noise(image, **kwargs):
-    """对输入图像添加 impulse noise (椒盐噪声)"""
-    noise_ratio = 0.02  # 控制噪声比例
+    noise_ratio = 0.02  
     output = image.copy()
-    
-    # 生成噪声 mask
+
     num_salt = np.ceil(noise_ratio * image.size * 0.5)
     num_pepper = np.ceil(noise_ratio * image.size * 0.5)
 
-    # 随机生成椒盐噪声坐标
     coords_salt = tuple(
         np.random.randint(0, i - 1, int(num_salt)) for i in image.shape[:2]
     )
@@ -45,23 +42,16 @@ def add_impulse_noise(image, **kwargs):
         np.random.randint(0, i - 1, int(num_pepper)) for i in image.shape[:2]
     )
 
-    # 应用椒盐噪声
-    output[coords_salt] = 255  # 盐噪声（白点）
-    output[coords_pepper] = 0   # 椒噪声（黑点）
+    output[coords_salt] = 255 
+    output[coords_pepper] = 0 
 
-    return output  # 返回处理后的图像
-print(A.__version__) 
-# 定义 transformation 函数
+    return output 
+
 def get_corruption_transform(corruption_type):
-    """根据 corruption_type 返回对应的 albumentations 增强操作"""
-    # if corruption_type == 'gaussian_noise':
-    #     return A.GaussNoise(var=(10.0, 50.0), p=1.0)  # 中等强度
     if corruption_type == 'shot_noise':
         return A.MultiplicativeNoise(multiplier=(0.9, 1.1), p=1.0)
     elif corruption_type == 'impulse_noise':
         return A.Lambda(image=add_impulse_noise, p=1.0)
-    # elif corruption_type == 'defocus_blur':
-    #     return A.DefocusBlur(radius=(1, 3), p=1.0)
     elif corruption_type == 'glass_blur':
         return A.GlassBlur(sigma=0.3, max_delta=1, iterations=1, p=1.0)
     elif corruption_type == 'motion_blur':
@@ -70,20 +60,12 @@ def get_corruption_transform(corruption_type):
         return A.ZoomBlur(max_factor=1.2, p=1.0)
     elif corruption_type == 'snow':
         return A.RandomSnow(brightness_coeff=1.1, p=1.0)
-    # elif corruption_type == 'frost':
-    #     return A.RandomFog(fog_coef_lower=0.2, fog_coef_upper=0.5,alpha_coef=0.1, p=1.0)
-    # elif corruption_type == 'fog':
-    #     return A.RandomFog(fog_coef_lower=0.3, fog_coef_upper=0.6, alpha_coef=0.1,p=1.0)
     elif corruption_type == 'brightness':
         return A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=1.0)
     elif corruption_type == 'contrast':
         return A.RandomBrightnessContrast(brightness_limit=0.0, contrast_limit=0.15, p=1.0)
-    # elif corruption_type == 'elastic_transform':
-    #     return A.ElasticTransform(alpha=1, sigma=50, alpha_affine=50, p=1.0)
     elif corruption_type == 'pixelate':
         return A.PixelDropout(dropout_prob=0.1, p=1.0)
-    # elif corruption_type == 'ImageCompression':
-    #     return A.ImageCompression(quality_lower=30, quality_upper=60, p=1.0)
     else:
         raise ValueError(f"Unknown corruption type: {corruption_type}")
 
@@ -227,19 +209,16 @@ def train(trainloader, model, optimizer, ar, ar_weight, confidence):
         
         outputs = model(inputs)
         total_loss = F.cross_entropy(outputs, targets)
-        
-        # 反向传播和优化
+
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
-        
-        # 计算标准准确率
+
         _, predicted = outputs.max(1)
         correct += predicted.eq(targets).sum().item()
         total += targets.size(0)
         train_loss += total_loss.item()
-    
-    # 计算平均损失和准确率
+
     avg_loss = train_loss / len(trainloader)
     acc = 100. * correct / total
     
