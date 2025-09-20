@@ -51,7 +51,7 @@ you could also download our [pre-trained DCRT models](https://drive.google.com/f
 
 ### Prepare the data and models
 
-The TinyImageNet dataset could be downloaded from [data](https://drive.google.com/file/d/1nyYlZFvpSRl_ogmaO0cm8-hMT4YMYe9D/view?usp=drive_link). The directory structure should be like:
+The TinyImageNet dataset could be downloaded from [data](http://cs231n.stanford.edu/tiny-imagenet-200.zip). The directory structure should be like:
 
 ```
 tiny-imagenet-200
@@ -72,7 +72,7 @@ you could also download our [pre-trained DCRT models](https://drive.google.com/f
 
 ### Prepare the data and models
 
-The ImageNet dataset could be downloaded from [data](https://drive.google.com/file/d/1nyYlZFvpSRl_ogmaO0cm8-hMT4YMYe9D/view?usp=drive_link). The directory structure should be like:
+The ImageNet dataset could be downloaded from [data](https://www.image-net.org/). The directory structure should be like:
 
 ```
 ImageNet
