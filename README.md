@@ -33,7 +33,7 @@ you can run the following script:
 ```
 bash ./DCRT_CIFAR10.sh
 ```
-you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for CIFAR10.
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1KmM5sEnJo-Y5B-KMhIjINcM13WEDD5Ls/view?usp=sharing) for CIFAR10.
 
 ## CIFAR-100
 
@@ -47,7 +47,7 @@ you can run the following script:
 ```
 bash ./DCRT_CIFAR100.sh
 ```
-you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for CIFAR100.
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1X-FW0ExHDZ1C8pwP1T1aNH-BAJfwENlN/view?usp=sharing) for CIFAR100.
 
 ## TinyImageNet
 
@@ -68,7 +68,7 @@ you can run the following script:
 ```
 bash ./DCRT_TinyImageNet.sh
 ```
-you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for TinyImageNet.
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1vdVSnqSDHTmK6EUE__4ftENgI-76vXAV/view?usp=sharing) for TinyImageNet.
 
 ## ImageNet
 
@@ -88,7 +88,7 @@ you can run the following script:
 ```
 bash ./DCRT_ImageNet.sh
 ```
-you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for ImageNet.
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1LnGwP-_XZKOOPTGhlk02PEIBk8NJ90T6/view?usp=sharing) for ImageNet.
 
 ## About us
 We are in XJTU-AISEC lab led by [Prof. Chao Shen](https://gr.xjtu.edu.cn/en/web/cshen/home), [Prof. Chenhao Lin](https://gr.xjtu.edu.cn/en/web/linchenhao), [Prof. Zhengyu Zhao](https://zhengyuzhao.github.io/), Prof. Qian Li, and etc. in the School of Cyber Science and Engineering, Xi'an Jiaotong University.
