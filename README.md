@@ -31,7 +31,7 @@ The CIFAR-10 dataset will be downloaded automatically when running the code.
 
 you can run the following script:
 ```
-bash ./DCRT_CIFAR10.sh
+bash ./CIFAR10/DCRT_CIFAR10.sh
 ```
 you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1KmM5sEnJo-Y5B-KMhIjINcM13WEDD5Ls/view?usp=sharing) for CIFAR10.
 
@@ -45,7 +45,7 @@ The CIFAR-100 dataset will be downloaded automatically when running the code.
 
 you can run the following script:
 ```
-bash ./DCRT_CIFAR100.sh
+bash ./CIFAR100/DCRT_CIFAR100.sh
 ```
 you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1X-FW0ExHDZ1C8pwP1T1aNH-BAJfwENlN/view?usp=sharing) for CIFAR100.
 
@@ -66,7 +66,7 @@ tiny-imagenet-200
 
 you can run the following script:
 ```
-bash ./DCRT_TinyImageNet.sh
+bash ./TinyImageNet/DCRT_TinyImageNet.sh
 ```
 you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1vdVSnqSDHTmK6EUE__4ftENgI-76vXAV/view?usp=sharing) for TinyImageNet.
 
@@ -86,7 +86,7 @@ ImageNet
 
 you can run the following script:
 ```
-bash ./DCRT_ImageNet.sh
+bash ./ImageNet/DCRT_ImageNet.sh
 ```
 you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1LnGwP-_XZKOOPTGhlk02PEIBk8NJ90T6/view?usp=sharing) for ImageNet.
 
