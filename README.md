@@ -4,6 +4,8 @@ This repository contains code to reproduce results from the paper:
 
 [QData-Centric Robust Training for Defending against Transfer-based Adversarial Attacks](https://ieeexplore.ieee.org/document/11168936/) (TIFS 2025)
 
+Transfer-based adversarial attacks pose a severe threat to real-world deep learning systems since they do not require access to target models. Adversarial training (AT), which is recognized as the most effective defense against white-box attacks, also ensures high robustness against (black-box) transfer-based attacks. However, AT suffers from significant computational overhead because it repeatedly generates adversarial examples (AEs) throughout the entire training process. In this paper, we demonstrate that such repeated generation is unnecessary to achieve robustness against transfer-based attacks. Instead, pre-generating AEs all at once before training is sufficient, as proposed in our new defense paradigm called Data-Centric Robust Training (DCRT). DCRT employs clean data augmentation and adversarial data augmentation techniques to enhance the dataset before training. Our experimental results show that DCRT outperforms widely-used AT techniques (e.g., PGD-AT, TRADES, EAT, and FAT) in terms of transfer-based black-box robustness and even surpasses the top-1 defense on RobustBench when combined with common model-centric techniques. We also highlight additional benefits of DCRT, such as improved training efficiency and class-wise fairness.
+
 ## Requirements
 
 + Python >= 3.8.0
@@ -19,87 +21,72 @@ This repository contains code to reproduce results from the paper:
 
 ## CIFAR-10
 
-### Prepare the data and models
+### Prepare the data
 
-Please download the [pretrained models](https://drive.google.com/file/d/1jfgJvq-kuu2f-XB-3Z5ml98ngNJX7zUe/view?usp=drive_link) and place them under ./results/515_6_wrong_early3_epo50. The CIFAR-10 dataset will be downloaded automatically when running the code. The directory structure should be like:
+The CIFAR-10 dataset will be downloaded automatically when running the code. 
 
-```
-results
-+-- 515_6_wrong_early3_epo50
-    +-- checkpoints_cifar10
-```
-
-### Running the HAM method on CIFAR-10
+### Running the DCRT method on CIFAR-10
 
 you can run the following script:
 ```
-bash ./515_6_wrong_early3_epo50.sh
+bash ./DCRT_CIFAR10.sh
 ```
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for CIFAR10.
 
 ## CIFAR-100
 
 ### Prepare the data and models
 
-Please download the [pretrained models](https://drive.google.com/file/d/1AhvShkc799QpT4I3LnINirieHudHWzrU/view?usp=drive_link) and place them under ./results/0726_2_cifar100_ham_keep_clean0d3_60epo. The CIFAR-100 dataset will be downloaded automatically when running the code. The directory structure should be like:
+The CIFAR-100 dataset will be downloaded automatically when running the code.
 
-```
-results
-+-- 0726_2_cifar100_ham_keep_clean0d3_60epo
-    +-- checkpoints_cifar100
-```
-
-### Running the HAM method on CIFAR-100
+### Running the DCRT method on CIFAR-100
 
 you can run the following script:
 ```
-bash ./0726_2_cifar100_ham_keep_clean0d3_60epo.sh
+bash ./DCRT_CIFAR100.sh
 ```
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for CIFAR100.
 
-## SVHN
+## TinyImageNet
 
 ### Prepare the data and models
 
-Please download the [pretrained models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) and place them under ./results/718_7_svhn_wrong_early5_epo50. The SVHN dataset will be downloaded automatically when running the code. The directory structure should be like:
+The TinyImageNet dataset could be downloaded from [data](https://drive.google.com/file/d/1nyYlZFvpSRl_ogmaO0cm8-hMT4YMYe9D/view?usp=drive_link). The directory structure should be like:
 
 ```
-results
-+-- 718_7_svhn_wrong_early5_epo50
-    +-- checkpoints_svhn
+tiny-imagenet-200
++-- train
++-- val
++-- test
 ```
 
-### Running the HAM method on SVHN
+### Running the DCRT method on TinyImageNet
 
 you can run the following script:
 ```
-bash ./718_7_svhn_wrong_early5_epo50.sh
+bash ./DCRT_TinyImageNet.sh
 ```
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for TinyImageNet.
 
-
-## ImageNette
+## ImageNet
 
 ### Prepare the data and models
 
-Please download the [pretrained models](https://drive.google.com/file/d/1WqAzuXXU363-H2PS0ByycypvcbASMUp7/view?usp=drive_link) and place them under ./results/0301_1_aham_netee_p18_nonorm. The ImageNette dataset could be downloaded from [data](https://drive.google.com/file/d/1nyYlZFvpSRl_ogmaO0cm8-hMT4YMYe9D/view?usp=drive_link). The directory structure should be like:
+The ImageNet dataset could be downloaded from [data](https://drive.google.com/file/d/1nyYlZFvpSRl_ogmaO0cm8-hMT4YMYe9D/view?usp=drive_link). The directory structure should be like:
 
 ```
-imagenette2-160
+ImageNet
 +-- train
 +-- val
 ```
 
-```
-results
-+-- 0301_1_aham_netee_p18_nonorm
-    +-- checkpoints_imagenette
-```
-
-### Running the HAM method on ImageNette
+### Running the DCRT method on ImageNet
 
 you can run the following script:
 ```
-bash ./0301_1_aham_netee_p18_nonorm.sh
+bash ./DCRT_ImageNet.sh
 ```
-
+you could also download our [pre-trained DCRT models](https://drive.google.com/file/d/1EyLnIk-UIPVVSsLz3B1jwxJxXFTji-Li/view?usp=drive_link) for ImageNet.
 
 ## About us
 We are in XJTU-AISEC lab led by [Prof. Chao Shen](https://gr.xjtu.edu.cn/en/web/cshen/home), [Prof. Chenhao Lin](https://gr.xjtu.edu.cn/en/web/linchenhao), [Prof. Zhengyu Zhao](https://zhengyuzhao.github.io/), Prof. Qian Li, and etc. in the School of Cyber Science and Engineering, Xi'an Jiaotong University.
