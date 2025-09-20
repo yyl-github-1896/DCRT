@@ -6,7 +6,7 @@ This repository contains code to reproduce results from the paper:
 
 Transfer-based adversarial attacks pose a severe threat to real-world deep learning systems since they do not require access to target models. Adversarial training (AT), which is recognized as the most effective defense against white-box attacks, also ensures high robustness against (black-box) transfer-based attacks. However, AT suffers from significant computational overhead because it repeatedly generates adversarial examples (AEs) throughout the entire training process. In this paper, we demonstrate that such repeated generation is unnecessary to achieve robustness against transfer-based attacks. Instead, pre-generating AEs all at once before training is sufficient, as proposed in our new defense paradigm called Data-Centric Robust Training (DCRT). DCRT employs clean data augmentation and adversarial data augmentation techniques to enhance the dataset before training. Our experimental results show that DCRT outperforms widely-used AT techniques (e.g., PGD-AT, TRADES, EAT, and FAT) in terms of transfer-based black-box robustness and even surpasses the top-1 defense on RobustBench when combined with common model-centric techniques. We also highlight additional benefits of DCRT, such as improved training efficiency and class-wise fairness.
 
-![DCRT.pdf](https://github.com/coolbomb1/DCRT/blob/main/DCRT-vs-AT.pdf)
+![DCRT.png](https://github.com/coolbomb1/DCRT/blob/main/DCRT.png)
 
 ## Requirements
 
