@@ -24,7 +24,6 @@ CORRUPTIONS = [
      'pixelate', 
 ]
 def add_impulse_noise(image, **kwargs):
-    """对输入图像添加 impulse noise (椒盐噪声)"""
     noise_ratio = 0.02 
     output = image.copy()
     num_salt = np.ceil(noise_ratio * image.size * 0.5)
@@ -40,7 +39,6 @@ def add_impulse_noise(image, **kwargs):
 
     return output 
 def get_corruption_transform(corruption_type):
-    """根据 corruption_type 返回对应的 albumentations 增强操作"""
     if corruption_type == 'shot_noise':
         return A.MultiplicativeNoise(multiplier=(0.9, 1.1), p=1.0)
     elif corruption_type == 'impulse_noise':
@@ -124,21 +122,20 @@ def create_imagenet_subset_loader(data_path, original_class_counts, transform, b
     )
     return loader
 def main():
-    root_data_path = '/data/crq/data/train_DCRTdataset'  # 新的混合数据集路径
-    root_ckpt_path = f'./checkpoints/{args.id}'  # 检查点保存路径
+    root_data_path = '/data/crq/data/train_DCRTdataset' 
+    root_ckpt_path = f'./checkpoints/{args.id}'
     
     print(f'Dataset path: {root_data_path}')
     print(f'Checkpoint path: {root_ckpt_path}')
 
-    # 模型架构配置
     arch_configs = {
         'resnet50': {
-            'epochs': 50,  # 修改2：训练周期改为30
+            'epochs': 50, 
             'batch_size': 256,
             'optimizer': 'SGD',
             'optim_hparams': {'lr': 0.01, 'momentum': 0.9, 'weight_decay': 1e-4},
             'scheduler': 'CosineAnnealingLR',
-            'scheduler_hparams': {'T_max': 30},  # 修改3：调整学习率衰减点
+            'scheduler_hparams': {'T_max': 30},
             'ar_weight': 0
         }
     }
@@ -167,22 +164,19 @@ def main():
     for epoch in tqdm(range(train_args['epochs'])):
         train_loader = create_imagenet_subset_loader(
         data_path=root_data_path,
-        original_class_counts=original_class_counts,  # 使用前面获取的类别数量字典
+        original_class_counts=original_class_counts, 
         transform=transform_train,
         batch_size=args.batch_size,
         num_workers=args.num_workers)
 
-        # 训练过程
         train_loss, train_acc,_ = train(
             train_loader, model, optimizer, 
             ar=args.ar, 
             ar_weight=train_args['ar_weight']
         )
 
-        # 更新学习率
         scheduler.step()
 
-        # 保存检查点
         best_acc = max(train_acc, best_acc)
         save_checkpoint({
             'epoch': epoch + 1,
